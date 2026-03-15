@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "156A6B2E-6979-4D54-BA0B-4FB15B2ED21D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:NOWATCH-TestProject.xcodeproj",
+      "identifier" : "F9C254062C08DF810026A73A",
+      "name" : "NOWATCH-TestProject"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:NOWATCH-TestProject.xcodeproj",
+        "identifier" : "9460ABCC2C0F72AB00412E0D",
+        "name" : "NOWATCH-TestProjectTests"
+      }
+    }
+  ],
+  "version" : 1
+}

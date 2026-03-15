@@ -1,0 +1,695 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9460ABC82C0F5B6000412E0D /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABC72C0F5B6000412E0D /* ImportService.swift */; };
+		9460ABD02C0F72AB00412E0D /* NOWATCH_TestProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABCF2C0F72AB00412E0D /* NOWATCH_TestProjectTests.swift */; };
+		9460ABD72C0F733D00412E0D /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABD62C0F733D00412E0D /* PersistenceTests.swift */; };
+		9460ABDB2C0F744000412E0D /* HeartRateEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABDA2C0F744000412E0D /* HeartRateEntityTests.swift */; };
+		9460ABDE2C0F74DB00412E0D /* ImportServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABDD2C0F74DB00412E0D /* ImportServiceTests.swift */; };
+		9460ABE02C0F750A00412E0D /* MockHearRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABDF2C0F750A00412E0D /* MockHearRateService.swift */; };
+		9460ABE42C0F7AFF00412E0D /* MockHeartRateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABE32C0F7AFF00412E0D /* MockHeartRateBuilder.swift */; };
+		9460ABE62C0F7B5A00412E0D /* MockImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABE52C0F7B5A00412E0D /* MockImportService.swift */; };
+		9460ABEA2C0F7CCF00412E0D /* HearRateServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABE92C0F7CCF00412E0D /* HearRateServiceTests.swift */; };
+		9460ABF02C0F812400412E0D /* HeartRateViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABEF2C0F812400412E0D /* HeartRateViewModelTests.swift */; };
+		9460ABF42C0F86E700412E0D /* StringOptional+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */; };
+		9460ABF62C0F87FD00412E0D /* StringOptional+DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */; };
+		94854FFC2C0F4A1000E2047C /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94854FFB2C0F4A1000E2047C /* HeartRateService.swift */; };
+		94AD6D422C09F6600014C9F2 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD6D412C09F6600014C9F2 /* ChartView.swift */; };
+		94AD6D442C0A07A30014C9F2 /* HeartRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */; };
+		F9C2540B2C08DF810026A73A /* NOWATCH_TestProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2540A2C08DF810026A73A /* NOWATCH_TestProjectApp.swift */; };
+		F9C2540D2C08DF810026A73A /* HeartRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2540C2C08DF810026A73A /* HeartRateView.swift */; };
+		F9C2540F2C08DF820026A73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C2540E2C08DF820026A73A /* Assets.xcassets */; };
+		F9C254122C08DF820026A73A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C254112C08DF820026A73A /* Preview Assets.xcassets */; };
+		F9C254142C08DF820026A73A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254132C08DF820026A73A /* Persistence.swift */; };
+		F9C254172C08DF820026A73A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F9C254152C08DF820026A73A /* Model.xcdatamodeld */; };
+		F9C2541F2C08DFEB0026A73A /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C2541E2C08DFEB0026A73A /* Charts.framework */; };
+		F9C254222C08E0BE0026A73A /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254202C08E0BE0026A73A /* HeartRate+CoreDataClass.swift */; };
+		F9C254232C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254212C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift */; };
+		F9C254442C08E9000026A73A /* heartRate.csv in Resources */ = {isa = PBXBuildFile; fileRef = F9C254432C08E9000026A73A /* heartRate.csv */; };
+		F9C254462C08EE2A0026A73A /* RandomNumberEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9460ABD12C0F72AB00412E0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9C253FF2C08DF810026A73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9C254062C08DF810026A73A;
+			remoteInfo = "NOWATCH-TestProject";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9460ABC72C0F5B6000412E0D /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
+		9460ABCD2C0F72AB00412E0D /* NOWATCH-TestProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NOWATCH-TestProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9460ABCF2C0F72AB00412E0D /* NOWATCH_TestProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NOWATCH_TestProjectTests.swift; sourceTree = "<group>"; };
+		9460ABD62C0F733D00412E0D /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
+		9460ABDA2C0F744000412E0D /* HeartRateEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateEntityTests.swift; sourceTree = "<group>"; };
+		9460ABDD2C0F74DB00412E0D /* ImportServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportServiceTests.swift; sourceTree = "<group>"; };
+		9460ABDF2C0F750A00412E0D /* MockHearRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHearRateService.swift; sourceTree = "<group>"; };
+		9460ABE32C0F7AFF00412E0D /* MockHeartRateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeartRateBuilder.swift; sourceTree = "<group>"; };
+		9460ABE52C0F7B5A00412E0D /* MockImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImportService.swift; sourceTree = "<group>"; };
+		9460ABE92C0F7CCF00412E0D /* HearRateServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HearRateServiceTests.swift; sourceTree = "<group>"; };
+		9460ABEF2C0F812400412E0D /* HeartRateViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModelTests.swift; sourceTree = "<group>"; };
+		9460ABF12C0F84AB00412E0D /* NOWATCH-TestProject.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "NOWATCH-TestProject.xctestplan"; sourceTree = "<group>"; };
+		9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringOptional+Date.swift"; sourceTree = "<group>"; };
+		9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringOptional+DateTests.swift"; sourceTree = "<group>"; };
+		94854FFB2C0F4A1000E2047C /* HeartRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
+		94AD6D412C09F6600014C9F2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
+		E1DE2C032C09C33000EC43D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F9C254072C08DF810026A73A /* NOWATCH-TestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NOWATCH-TestProject.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C2540A2C08DF810026A73A /* NOWATCH_TestProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NOWATCH_TestProjectApp.swift; sourceTree = "<group>"; };
+		F9C2540C2C08DF810026A73A /* HeartRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateView.swift; sourceTree = "<group>"; };
+		F9C2540E2C08DF820026A73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9C254112C08DF820026A73A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9C254132C08DF820026A73A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		F9C254162C08DF820026A73A /* NOWATCH_TestProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NOWATCH_TestProject.xcdatamodel; sourceTree = "<group>"; };
+		F9C2541E2C08DFEB0026A73A /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
+		F9C254202C08E0BE0026A73A /* HeartRate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F9C254212C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F9C254432C08E9000026A73A /* heartRate.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heartRate.csv; sourceTree = "<group>"; };
+		F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberEmitter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9460ABCA2C0F72AB00412E0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C254042C08DF810026A73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C2541F2C08DFEB0026A73A /* Charts.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9460ABCE2C0F72AB00412E0D /* NOWATCH-TestProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABCF2C0F72AB00412E0D /* NOWATCH_TestProjectTests.swift */,
+				9460ABF82C0F891800412E0D /* Extensions */,
+				9460ABEB2C0F80F500412E0D /* Scenes */,
+				9460ABDC2C0F74CB00412E0D /* Services */,
+				9460ABD82C0F73C900412E0D /* CoreData */,
+			);
+			path = "NOWATCH-TestProjectTests";
+			sourceTree = "<group>";
+		};
+		9460ABD82C0F73C900412E0D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABD62C0F733D00412E0D /* PersistenceTests.swift */,
+				9460ABD92C0F743100412E0D /* EntityTests */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		9460ABD92C0F743100412E0D /* EntityTests */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABDA2C0F744000412E0D /* HeartRateEntityTests.swift */,
+			);
+			path = EntityTests;
+			sourceTree = "<group>";
+		};
+		9460ABDC2C0F74CB00412E0D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABE22C0F77A900412E0D /* Mocks */,
+				9460ABDD2C0F74DB00412E0D /* ImportServiceTests.swift */,
+				9460ABE92C0F7CCF00412E0D /* HearRateServiceTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9460ABE22C0F77A900412E0D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABDF2C0F750A00412E0D /* MockHearRateService.swift */,
+				9460ABE52C0F7B5A00412E0D /* MockImportService.swift */,
+				9460ABE32C0F7AFF00412E0D /* MockHeartRateBuilder.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		9460ABEB2C0F80F500412E0D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABEE2C0F811500412E0D /* HeartRateScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9460ABED2C0F810500412E0D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				94AD6D472C0A0DCC0014C9F2 /* HeartRateScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9460ABEE2C0F811500412E0D /* HeartRateScene */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABEF2C0F812400412E0D /* HeartRateViewModelTests.swift */,
+			);
+			path = HeartRateScene;
+			sourceTree = "<group>";
+		};
+		9460ABF22C0F86D500412E0D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9460ABF82C0F891800412E0D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9460ABF92C0F895F00412E0D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		94854FFD2C0F4A1800E2047C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9460ABC72C0F5B6000412E0D /* ImportService.swift */,
+				94854FFB2C0F4A1000E2047C /* HeartRateService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		94AD6D452C0A0DAD0014C9F2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F9C254152C08DF820026A73A /* Model.xcdatamodeld */,
+				F9C254132C08DF820026A73A /* Persistence.swift */,
+				94AD6D462C0A0DB60014C9F2 /* Entities */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		94AD6D462C0A0DB60014C9F2 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				F9C254202C08E0BE0026A73A /* HeartRate+CoreDataClass.swift */,
+				F9C254212C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		94AD6D472C0A0DCC0014C9F2 /* HeartRateScene */ = {
+			isa = PBXGroup;
+			children = (
+				94AD6D412C09F6600014C9F2 /* ChartView.swift */,
+				F9C2540C2C08DF810026A73A /* HeartRateView.swift */,
+				94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */,
+			);
+			path = HeartRateScene;
+			sourceTree = "<group>";
+		};
+		F9C253FE2C08DF810026A73A = {
+			isa = PBXGroup;
+			children = (
+				9460ABF12C0F84AB00412E0D /* NOWATCH-TestProject.xctestplan */,
+				F9C254092C08DF810026A73A /* NOWATCH-TestProject */,
+				9460ABCE2C0F72AB00412E0D /* NOWATCH-TestProjectTests */,
+				F9C254082C08DF810026A73A /* Products */,
+				F9C2541D2C08DFEB0026A73A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F9C254082C08DF810026A73A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9C254072C08DF810026A73A /* NOWATCH-TestProject.app */,
+				9460ABCD2C0F72AB00412E0D /* NOWATCH-TestProjectTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9C254092C08DF810026A73A /* NOWATCH-TestProject */ = {
+			isa = PBXGroup;
+			children = (
+				E1DE2C032C09C33000EC43D5 /* README.md */,
+				F9C2540A2C08DF810026A73A /* NOWATCH_TestProjectApp.swift */,
+				9460ABF92C0F895F00412E0D /* Helpers */,
+				9460ABF22C0F86D500412E0D /* Extensions */,
+				94854FFD2C0F4A1800E2047C /* Services */,
+				9460ABED2C0F810500412E0D /* Scenes */,
+				94AD6D452C0A0DAD0014C9F2 /* CoreData */,
+				F9C254432C08E9000026A73A /* heartRate.csv */,
+				F9C2540E2C08DF820026A73A /* Assets.xcassets */,
+				F9C254102C08DF820026A73A /* Preview Content */,
+			);
+			path = "NOWATCH-TestProject";
+			sourceTree = "<group>";
+		};
+		F9C254102C08DF820026A73A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F9C254112C08DF820026A73A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9C2541D2C08DFEB0026A73A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9C2541E2C08DFEB0026A73A /* Charts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9460ABCC2C0F72AB00412E0D /* NOWATCH-TestProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9460ABD32C0F72AB00412E0D /* Build configuration list for PBXNativeTarget "NOWATCH-TestProjectTests" */;
+			buildPhases = (
+				9460ABC92C0F72AB00412E0D /* Sources */,
+				9460ABCA2C0F72AB00412E0D /* Frameworks */,
+				9460ABCB2C0F72AB00412E0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9460ABD22C0F72AB00412E0D /* PBXTargetDependency */,
+			);
+			name = "NOWATCH-TestProjectTests";
+			productName = "NOWATCH-TestProjectTests";
+			productReference = 9460ABCD2C0F72AB00412E0D /* NOWATCH-TestProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F9C254062C08DF810026A73A /* NOWATCH-TestProject */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9C2541A2C08DF820026A73A /* Build configuration list for PBXNativeTarget "NOWATCH-TestProject" */;
+			buildPhases = (
+				F9C254032C08DF810026A73A /* Sources */,
+				F9C254042C08DF810026A73A /* Frameworks */,
+				F9C254052C08DF810026A73A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NOWATCH-TestProject";
+			productName = "NOWATCH-TestProject";
+			productReference = F9C254072C08DF810026A73A /* NOWATCH-TestProject.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9C253FF2C08DF810026A73A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					9460ABCC2C0F72AB00412E0D = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F9C254062C08DF810026A73A;
+					};
+					F9C254062C08DF810026A73A = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = F9C254022C08DF810026A73A /* Build configuration list for PBXProject "NOWATCH-TestProject" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F9C253FE2C08DF810026A73A;
+			productRefGroup = F9C254082C08DF810026A73A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9C254062C08DF810026A73A /* NOWATCH-TestProject */,
+				9460ABCC2C0F72AB00412E0D /* NOWATCH-TestProjectTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9460ABCB2C0F72AB00412E0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C254052C08DF810026A73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C254122C08DF820026A73A /* Preview Assets.xcassets in Resources */,
+				F9C254442C08E9000026A73A /* heartRate.csv in Resources */,
+				F9C2540F2C08DF820026A73A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9460ABC92C0F72AB00412E0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9460ABD02C0F72AB00412E0D /* NOWATCH_TestProjectTests.swift in Sources */,
+				9460ABD72C0F733D00412E0D /* PersistenceTests.swift in Sources */,
+				9460ABF62C0F87FD00412E0D /* StringOptional+DateTests.swift in Sources */,
+				9460ABE62C0F7B5A00412E0D /* MockImportService.swift in Sources */,
+				9460ABE42C0F7AFF00412E0D /* MockHeartRateBuilder.swift in Sources */,
+				9460ABEA2C0F7CCF00412E0D /* HearRateServiceTests.swift in Sources */,
+				9460ABDE2C0F74DB00412E0D /* ImportServiceTests.swift in Sources */,
+				9460ABF02C0F812400412E0D /* HeartRateViewModelTests.swift in Sources */,
+				9460ABE02C0F750A00412E0D /* MockHearRateService.swift in Sources */,
+				9460ABDB2C0F744000412E0D /* HeartRateEntityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C254032C08DF810026A73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C254172C08DF820026A73A /* Model.xcdatamodeld in Sources */,
+				9460ABC82C0F5B6000412E0D /* ImportService.swift in Sources */,
+				F9C254462C08EE2A0026A73A /* RandomNumberEmitter.swift in Sources */,
+				F9C254142C08DF820026A73A /* Persistence.swift in Sources */,
+				F9C254232C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift in Sources */,
+				94854FFC2C0F4A1000E2047C /* HeartRateService.swift in Sources */,
+				F9C2540D2C08DF810026A73A /* HeartRateView.swift in Sources */,
+				F9C254222C08E0BE0026A73A /* HeartRate+CoreDataClass.swift in Sources */,
+				94AD6D442C0A07A30014C9F2 /* HeartRateViewModel.swift in Sources */,
+				F9C2540B2C08DF810026A73A /* NOWATCH_TestProjectApp.swift in Sources */,
+				9460ABF42C0F86E700412E0D /* StringOptional+Date.swift in Sources */,
+				94AD6D422C09F6600014C9F2 /* ChartView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9460ABD22C0F72AB00412E0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9C254062C08DF810026A73A /* NOWATCH-TestProject */;
+			targetProxy = 9460ABD12C0F72AB00412E0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9460ABD42C0F72AB00412E0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nowatch.NOWATCH-TestProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NOWATCH-TestProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NOWATCH-TestProject";
+			};
+			name = Debug;
+		};
+		9460ABD52C0F72AB00412E0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nowatch.NOWATCH-TestProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NOWATCH-TestProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NOWATCH-TestProject";
+			};
+			name = Release;
+		};
+		F9C254182C08DF820026A73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9C254192C08DF820026A73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9C2541B2C08DF820026A73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NOWATCH-TestProject/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nowatch.NOWATCH-TestProject";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9C2541C2C08DF820026A73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"NOWATCH-TestProject/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nowatch.NOWATCH-TestProject";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9460ABD32C0F72AB00412E0D /* Build configuration list for PBXNativeTarget "NOWATCH-TestProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9460ABD42C0F72AB00412E0D /* Debug */,
+				9460ABD52C0F72AB00412E0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9C254022C08DF810026A73A /* Build configuration list for PBXProject "NOWATCH-TestProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C254182C08DF820026A73A /* Debug */,
+				F9C254192C08DF820026A73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9C2541A2C08DF820026A73A /* Build configuration list for PBXNativeTarget "NOWATCH-TestProject" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C2541B2C08DF820026A73A /* Debug */,
+				F9C2541C2C08DF820026A73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F9C254152C08DF820026A73A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F9C254162C08DF820026A73A /* NOWATCH_TestProject.xcdatamodel */,
+			);
+			currentVersion = F9C254162C08DF820026A73A /* NOWATCH_TestProject.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F9C253FF2C08DF810026A73A /* Project object */;
+}
