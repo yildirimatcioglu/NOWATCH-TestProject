@@ -6,31 +6,41 @@
 //
 
 import Foundation
-import Combine
 import CoreData
 
-class HeartRateViewModel: ObservableObject {
-    var viewContext: NSManagedObjectContext
-    @Published var selectedDate: Date = .now
-    @Published var heartRates: [HeartRate] = []
+@MainActor
+final class HeartRateViewModel: ObservableObject {
 
-    private var cancellables = Set<AnyCancellable>()
+    @Published var selectedDate: Date = .now
+    @Published private(set) var heartRates: [HeartRate] = []
+    @Published private(set) var isLoading = false
+    @Published var errorMessage: String?
+
+    var isToday: Bool {
+        Calendar.current.isDateInToday(selectedDate)
+    }
 
     let heartRateService: HeartRateServiceProtocol
     let importService: ImportServiceProtocol
 
-    init(viewContext: NSManagedObjectContext, heartRateService: HeartRateServiceProtocol, importService: ImportServiceProtocol) {
-        self.viewContext = viewContext
+    init(
+        heartRateService: HeartRateServiceProtocol,
+        importService: ImportServiceProtocol
+    ) {
         self.heartRateService = heartRateService
         self.importService = importService
+    }
 
-        getHeartRatesFromLocaleFile()
+    func loadInitialData() async {
+        isLoading = true
+        defer { isLoading = false }
 
-        $selectedDate
-            .sink { [weak self] date in
-                self?.fetchHeartRates()
-            }
-            .store(in: &cancellables)
+        await importService.importHeartRateFromFileIfNeeded()
+        fetchHeartRates()
+    }
+
+    func fetchHeartRates() {
+        heartRates = heartRateService.fetchHeartRates(selectedDate: selectedDate)
     }
 
     func storeLiveData(liveHeartRate: Int) {
@@ -38,16 +48,7 @@ class HeartRateViewModel: ObservableObject {
             try heartRateService.storeLiveData(liveHeartRate: liveHeartRate)
             fetchHeartRates()
         } catch {
-            // show Error here.
+            errorMessage = error.localizedDescription
         }
-    }
-
-    func fetchHeartRates() {
-        let heartRatesList = heartRateService.fetchHeartRates(selectedDate: selectedDate)
-        heartRates = heartRatesList
-    }
-
-    func getHeartRatesFromLocaleFile() {
-        importService.importHeartRateFromFile()
     }
 }

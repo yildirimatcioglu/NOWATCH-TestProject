@@ -8,22 +8,10 @@
 import Foundation
 @testable import NOWATCH_TestProject
 
-class MockImportService: ImportServiceProtocol {
-    let heartRateService: HeartRateServiceProtocol
+final class MockImportService: ImportServiceProtocol {
+    var importCalled = false
 
-    var importHeartRateFromFileCalled = false // Track if importHeartRateFromFile() was called
-
-    init(heartRateService: HeartRateServiceProtocol) {
-        self.heartRateService = heartRateService
-    }
-
-    func importHeartRateFromFile() {
-        importHeartRateFromFileCalled = true
-        let mockBulkData = MockHeartRateBuilder.heartRates
-        do {
-            try heartRateService.storeBulkData(data: mockBulkData)
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
+    func importHeartRateFromFileIfNeeded() async {
+        importCalled = true
     }
 }

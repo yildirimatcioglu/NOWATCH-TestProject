@@ -6,58 +6,88 @@
 //
 
 import Foundation
+import CoreData
 
 protocol ImportServiceProtocol {
-    func importHeartRateFromFile()
+    func importHeartRateFromFileIfNeeded() async
 }
 
 final class ImportService: ImportServiceProtocol {
 
-    let heartRateService: HeartRateServiceProtocol
+    private let container: NSPersistentContainer
 
-    init(heartRateService: HeartRateServiceProtocol) {
-        self.heartRateService = heartRateService
+    init(container: NSPersistentContainer) {
+        self.container = container
     }
 
-    func importHeartRateFromFile() {
-        parseCSV(fileName: "heartRate")
+    func importHeartRateFromFileIfNeeded() async {
+        let alreadyImported = await hasExistingData()
+        guard !alreadyImported else { return }
+
+        guard let records = parseCSV(fileName: "heartRate") else { return }
+        await insertRecords(records)
     }
 
-    private func parseCSV(fileName: String) {
-        guard let filePath = Bundle.main.path(forResource: fileName, ofType: "csv") else {
-            print("CSV file not found")
-            return
+    private func hasExistingData() async -> Bool {
+        let context = container.newBackgroundContext()
+        return await context.perform {
+            let request: NSFetchRequest<HeartRate> = HeartRate.fetchRequest()
+            request.fetchLimit = 1
+            return ((try? context.count(for: request)) ?? 0) > 0
+        }
+    }
+
+    private func parseCSV(fileName: String) -> [(Date, Int32)]? {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "csv") else {
+            return nil
         }
 
         do {
-            let contents = try String(contentsOfFile: filePath, encoding: .utf8)
-            let rows = contents.components(separatedBy: "\n")
-            var data: [[String]] = []
-
-            for row in rows {
-                let columns = row.components(separatedBy: ",")
-                data.append(columns)
-            }
-            data.removeFirst(1)
-            storeCSVData(data: data)
+            let contents = try String(contentsOf: url, encoding: .utf8)
+            return contents
+                .components(separatedBy: .newlines)
+                .dropFirst()
+                .compactMap { row -> (Date, Int32)? in
+                    let columns = row.components(separatedBy: ",")
+                    guard columns.count >= 2,
+                          let timestamp = TimeInterval(columns[0].trimmingCharacters(in: .whitespaces)),
+                          let value = Int32(columns[1].trimmingCharacters(in: .whitespacesAndNewlines))
+                    else { return nil }
+                    return (Date(timeIntervalSince1970: timestamp), value)
+                }
         } catch {
-            print("Failed to parse CSV: \(error)")
+            return nil
         }
     }
 
-    private func storeCSVData(data: [[String]]) {
-        let mappedData = data.compactMap({ row in
-            return (
-                row.first.unixTimestampToDate(),
-                Int32(row.last ?? "")
-            )
-        })
-            .filter { $0.0 != nil && $0.1 != nil }
-            .map { ($0.0!, $0.1!) }
-        do {
-            try heartRateService.storeBulkData(data: mappedData)
-        } catch let error {
-            print("Failed to store CSV Data: \(error)")
+    private func insertRecords(_ records: [(Date, Int32)]) async {
+        let batchSize = 5_000
+        let context = container.newBackgroundContext()
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+
+        await context.perform {
+            for (index, (date, value)) in records.enumerated() {
+                let record = HeartRate(context: context)
+                record.datetime = date
+                record.value = value
+
+                if (index + 1).isMultiple(of: batchSize) {
+                    do {
+                        try context.save()
+                        context.reset()
+                    } catch {
+                        context.rollback()
+                    }
+                }
+            }
+
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    context.rollback()
+                }
+            }
         }
     }
 }

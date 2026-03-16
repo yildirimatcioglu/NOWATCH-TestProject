@@ -6,64 +6,89 @@
 //
 
 import XCTest
-import Combine
 import CoreData
 @testable import NOWATCH_TestProject
 
+@MainActor
+final class HeartRateViewModelTests: XCTestCase {
 
-class HeartRateViewModelTests: XCTestCase {
-
-    var viewModel: HeartRateViewModel!
-    var mockHeartRateService: MockHeartRateService!
-    var mockImportService: MockImportService!
-    var viewContext: NSManagedObjectContext!
+    private var viewModel: HeartRateViewModel!
+    private var mockHeartRateService: MockHeartRateService!
+    private var mockImportService: MockImportService!
+    private var viewContext: NSManagedObjectContext!
 
     override func setUp() {
         super.setUp()
         let controller = PersistenceController(inMemory: true)
-        viewContext = controller.container.newBackgroundContext()
+        viewContext = controller.container.viewContext
         mockHeartRateService = MockHeartRateService()
-        mockImportService = MockImportService(heartRateService: mockHeartRateService)
-
-        // Initialize the viewModel
-        viewModel = HeartRateViewModel(viewContext: viewContext, heartRateService: mockHeartRateService, importService: mockImportService)
+        mockImportService = MockImportService()
+        viewModel = HeartRateViewModel(
+            heartRateService: mockHeartRateService,
+            importService: mockImportService
+        )
     }
 
     override func tearDown() {
         viewModel = nil
         mockHeartRateService = nil
         mockImportService = nil
+        viewContext = nil
         super.tearDown()
     }
 
-    // MARK: - Tests
-
     func testFetchHeartRates() {
-        let expectedHeartRates = [HeartRate(context: viewContext), HeartRate(context: viewContext)]
-        mockHeartRateService.fetchedHeartRates = expectedHeartRates
-        let testDate = Date()
-        viewModel.selectedDate = testDate
+        let expected = [HeartRate(context: viewContext), HeartRate(context: viewContext)]
+        mockHeartRateService.fetchedHeartRates = expected
+
         viewModel.fetchHeartRates()
-        XCTAssertEqual(viewModel.heartRates, expectedHeartRates)
+
+        XCTAssertEqual(viewModel.heartRates, expected)
     }
 
     func testStoreLiveData() {
         let liveHeartRate = 120
         viewModel.storeLiveData(liveHeartRate: liveHeartRate)
+
         XCTAssertTrue(mockHeartRateService.storeLiveDataCalled)
-        XCTAssertTrue(mockHeartRateService.storedHeartRates.contains(where: {
-            $0.1 == liveHeartRate
-        }))
+        XCTAssertTrue(mockHeartRateService.storedHeartRates.contains { $0.1 == Int32(liveHeartRate) })
     }
 
-    func testGetHeartRatesFromLocaleFile() {
-        viewModel.getHeartRatesFromLocaleFile()
-        XCTAssertTrue(mockImportService.importHeartRateFromFileCalled)
+    func testStoreLiveDataSetsErrorMessageOnFailure() {
+        let expectedError = NSError(domain: "test", code: 1, userInfo: [NSLocalizedDescriptionKey: "save failed"])
+        mockHeartRateService.storeLiveDataError = expectedError
+
+        viewModel.storeLiveData(liveHeartRate: 80)
+
+        XCTAssertNotNil(viewModel.errorMessage)
+        XCTAssertEqual(viewModel.errorMessage, "save failed")
     }
 
-    func testSelectedDateSink() {
-        let testDate = Date().addingTimeInterval(-60 * 60 * 24) // One day earlier
-        viewModel.selectedDate = testDate
-        XCTAssertEqual(viewModel.selectedDate, testDate)
+    func testLoadInitialDataCallsImport() async {
+        await viewModel.loadInitialData()
+
+        XCTAssertTrue(mockImportService.importCalled)
+    }
+
+    func testLoadInitialDataSetsLoading() async {
+        XCTAssertFalse(viewModel.isLoading)
+        await viewModel.loadInitialData()
+        XCTAssertFalse(viewModel.isLoading)
+    }
+
+    func testIsTodayReturnsTrueForNow() {
+        viewModel.selectedDate = .now
+        XCTAssertTrue(viewModel.isToday)
+    }
+
+    func testIsTodayReturnsFalseForPastDate() {
+        viewModel.selectedDate = Date.distantPast
+        XCTAssertFalse(viewModel.isToday)
+    }
+
+    func testSelectedDateChangeDoesNotCrash() {
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now)!
+        viewModel.selectedDate = yesterday
+        XCTAssertEqual(viewModel.selectedDate, yesterday)
     }
 }

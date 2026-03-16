@@ -7,14 +7,16 @@ struct NOWATCH_TestProjectApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
-        let heartRateService = HeartRateService(viewContext: persistenceController.container.viewContext)
+        let container = persistenceController.container
+        let heartRateService = HeartRateService(viewContext: container.viewContext)
+        let importService = ImportService(container: container)
+
         WindowGroup {
             HeartRateView(viewModel: HeartRateViewModel(
-                viewContext: persistenceController.container.viewContext,
                 heartRateService: heartRateService,
-                importService: ImportService(heartRateService: heartRateService)
+                importService: importService
             ))
-            .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environment(\.managedObjectContext, container.viewContext)
         }
     }
 }

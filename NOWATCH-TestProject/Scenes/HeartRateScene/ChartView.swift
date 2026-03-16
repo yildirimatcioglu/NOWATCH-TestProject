@@ -9,66 +9,117 @@ import SwiftUI
 import Charts
 
 struct ChartView: View {
-    var heartRates: [HeartRate]
+    let heartRates: [HeartRate]
     let selectedDate: Date
 
-    @State private var currentScale: CGFloat = 1.0
-    @State private var currentOffset: CGFloat = 0.0
+    private var chartData: [EMADataPoint] {
+        let values = heartRates.map { Double($0.value) }
+        let emaValues = calculateEMA(for: values)
+
+        return zip(heartRates, emaValues).enumerated().compactMap { index, pair in
+            let (heartRate, ema) = pair
+            guard let datetime = heartRate.datetime else { return nil }
+            return EMADataPoint(id: index, date: datetime, ema: ema)
+        }
+    }
 
     var body: some View {
-        let emaData = calculateEMA(for: heartRates.map { Double($0.value) })
-        GeometryReader { geometry in
-            ScrollView(.horizontal, showsIndicators: false) {
-                VStack {
-                    Chart {
-                        ForEach(heartRates.indices, id: \.self) { index in
-                            if let datetime = heartRates[index].datetime {
-                                if index < emaData.count {
-                                    LineMark(
-                                        x: .value("Date", datetime),
-                                        y: .value("EMA", emaData[index])
-                                    )
-                                    .foregroundStyle(.red)
-                                }
-                            }
-                        }
-                    }
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .hour, count: 1)) { value in
-                            AxisValueLabel(format: .dateTime.hour(), centered: true)
-                            AxisTick(centered: true, length: 4, stroke: StrokeStyle(lineWidth: 1))
-                            AxisGridLine()
-                        }
-                    }
-                    .frame(width: max(geometry.size.width, geometry.size.width * currentScale))
-                }
-                .offset(x: currentOffset)
-                .gesture(
-                    MagnificationGesture()
-                        .onChanged { value in
-                            currentScale = value.magnitude
-                        }
-                        .simultaneously(with: DragGesture()
-                            .onChanged { value in
-                                currentOffset = value.translation.width
-                            }
-                        )
+        VStack(alignment: .leading, spacing: 8) {
+            latestReadingHeader
+            chart
+        }
+    }
+
+    @ViewBuilder
+    private var latestReadingHeader: some View {
+        if let latest = chartData.last {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text("\(Int(latest.ema))")
+                    .font(.system(size: 48, weight: .bold, design: .rounded))
+                    .foregroundStyle(.red)
+                    .contentTransition(.numericText())
+                    .animation(.easeInOut, value: Int(latest.ema))
+                Text("BPM")
+                    .font(.title3)
+                    .foregroundStyle(.secondary)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Current heart rate: \(Int(latest.ema)) beats per minute")
+            .padding(.horizontal)
+        }
+    }
+
+    private var chart: some View {
+        Chart(chartData) { point in
+            AreaMark(
+                x: .value("Time", point.date),
+                y: .value("Heart Rate", point.ema)
+            )
+            .foregroundStyle(
+                .linearGradient(
+                    colors: [.red.opacity(0.25), .red.opacity(0.02)],
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
+            )
+            .interpolationMethod(.catmullRom)
+
+            LineMark(
+                x: .value("Time", point.date),
+                y: .value("Heart Rate", point.ema)
+            )
+            .foregroundStyle(.red)
+            .interpolationMethod(.catmullRom)
+            .lineStyle(StrokeStyle(lineWidth: 2))
+        }
+        .chartYAxisLabel("BPM")
+        .chartXAxis {
+            AxisMarks(values: .stride(by: .hour, count: 3)) { _ in
+                AxisValueLabel(format: .dateTime.hour().minute())
+                AxisTick()
+                AxisGridLine()
             }
         }
+        .chartYAxis {
+            AxisMarks { _ in
+                AxisValueLabel()
+                AxisGridLine(stroke: StrokeStyle(lineWidth: 0.5))
+            }
+        }
+        .padding(.horizontal)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(accessibilitySummary)
+    }
+
+    private var accessibilitySummary: String {
+        guard let minEma = chartData.map(\.ema).min(),
+              let maxEma = chartData.map(\.ema).max()
+        else {
+            return "Heart rate chart with no data"
+        }
+        let avg = chartData.map(\.ema).reduce(0, +) / Double(chartData.count)
+        return "Heart rate chart with \(chartData.count) readings. Range: \(Int(minEma)) to \(Int(maxEma)) BPM. Average: \(Int(avg)) BPM."
     }
 
     private func calculateEMA(for values: [Double], period: Int = 10) -> [Double] {
-        guard !values.isEmpty else { return [] }
+        guard let first = values.first else { return [] }
 
-        let k = 2.0 / Double(period + 1)
-        var emaValues: [Double] = [values[0]]
+        let multiplier = 2.0 / Double(period + 1)
+        var result = [Double]()
+        result.reserveCapacity(values.count)
+        result.append(first)
 
         for i in 1..<values.count {
-            let ema = values[i] * k + emaValues[i - 1] * (1 - k)
-            emaValues.append(ema)
+            let ema = values[i] * multiplier + result[i - 1] * (1 - multiplier)
+            result.append(ema)
         }
 
-        return emaValues
+        return result
     }
+}
+
+private struct EMADataPoint: Identifiable {
+    let id: Int
+    let date: Date
+    let ema: Double
 }

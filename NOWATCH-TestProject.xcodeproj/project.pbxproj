@@ -32,7 +32,7 @@
 		F9C254222C08E0BE0026A73A /* HeartRate+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254202C08E0BE0026A73A /* HeartRate+CoreDataClass.swift */; };
 		F9C254232C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254212C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift */; };
 		F9C254442C08E9000026A73A /* heartRate.csv in Resources */ = {isa = PBXBuildFile; fileRef = F9C254432C08E9000026A73A /* heartRate.csv */; };
-		F9C254462C08EE2A0026A73A /* RandomNumberEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */; };
+		F9C254462C08EE2A0026A73A /* HeartRateEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C254452C08EE2A0026A73A /* HeartRateEmitter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,7 @@
 		F9C254202C08E0BE0026A73A /* HeartRate+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataClass.swift"; sourceTree = "<group>"; };
 		F9C254212C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HeartRate+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F9C254432C08E9000026A73A /* heartRate.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = heartRate.csv; sourceTree = "<group>"; };
-		F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberEmitter.swift; sourceTree = "<group>"; };
+		F9C254452C08EE2A0026A73A /* HeartRateEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateEmitter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +189,7 @@
 		9460ABF92C0F895F00412E0D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F9C254452C08EE2A0026A73A /* RandomNumberEmitter.swift */,
+				F9C254452C08EE2A0026A73A /* HeartRateEmitter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 			files = (
 				F9C254172C08DF820026A73A /* Model.xcdatamodeld in Sources */,
 				9460ABC82C0F5B6000412E0D /* ImportService.swift in Sources */,
-				F9C254462C08EE2A0026A73A /* RandomNumberEmitter.swift in Sources */,
+				F9C254462C08EE2A0026A73A /* HeartRateEmitter.swift in Sources */,
 				F9C254142C08DF820026A73A /* Persistence.swift in Sources */,
 				F9C254232C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift in Sources */,
 				94854FFC2C0F4A1000E2047C /* HeartRateService.swift in Sources */,

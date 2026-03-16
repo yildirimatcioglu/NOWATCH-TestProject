@@ -16,47 +16,46 @@ protocol HeartRateServiceProtocol {
 
 final class HeartRateService: HeartRateServiceProtocol {
 
-    let viewContext: NSManagedObjectContext
+    private let viewContext: NSManagedObjectContext
 
     init(viewContext: NSManagedObjectContext) {
         self.viewContext = viewContext
     }
-    
+
     func fetchHeartRates(selectedDate: Date) -> [HeartRate] {
         let calendar = Calendar.current
         let startOfDay = calendar.startOfDay(for: selectedDate)
-        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+        guard let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else { return [] }
 
         let fetchRequest: NSFetchRequest<HeartRate> = HeartRate.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "datetime >= %@ AND datetime < %@", startOfDay as CVarArg, endOfDay as CVarArg)
+        fetchRequest.predicate = NSPredicate(
+            format: "datetime >= %@ AND datetime < %@",
+            startOfDay as CVarArg,
+            endOfDay as CVarArg
+        )
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \HeartRate.datetime, ascending: true)]
 
-        return (try? viewContext.fetch(fetchRequest)) ?? []
+        do {
+            return try viewContext.fetch(fetchRequest)
+        } catch {
+            print("Failed to fetch heart rates: \(error)")
+            return []
+        }
     }
 
     func storeLiveData(liveHeartRate: Int) throws {
-        let newRecord = HeartRate(context: viewContext)
-        newRecord.datetime = Date.now
-        newRecord.value = Int32(liveHeartRate)
-        do {
-            try viewContext.save()
-        } catch let error {
-            print("Failed to save heart rates: \(error)")
-            throw error
-        }
+        let record = HeartRate(context: viewContext)
+        record.datetime = .now
+        record.value = Int32(liveHeartRate)
+        try viewContext.save()
     }
 
     func storeBulkData(data: [(Date, Int32)]) throws {
-        for row in data {
-            let newRecord = HeartRate(context: viewContext)
-            newRecord.datetime = row.0
-            newRecord.value = row.1
+        for (date, value) in data {
+            let record = HeartRate(context: viewContext)
+            record.datetime = date
+            record.value = value
         }
-        do {
-            try viewContext.save()
-        } catch let error {
-            print("Failed to save heart rates: \(error)")
-            throw error
-        }
+        try viewContext.save()
     }
 }
