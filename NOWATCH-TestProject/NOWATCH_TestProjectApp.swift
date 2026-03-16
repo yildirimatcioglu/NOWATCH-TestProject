@@ -17,6 +17,7 @@ struct NOWATCH_TestProjectApp: App {
                 importService: importService
             ))
             .environment(\.managedObjectContext, container.viewContext)
+            .preferredColorScheme(.dark)
         }
     }
 }

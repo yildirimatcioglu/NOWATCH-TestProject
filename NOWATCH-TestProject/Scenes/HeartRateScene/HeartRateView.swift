@@ -8,23 +8,15 @@ struct HeartRateView: View {
     @StateObject var viewModel: HeartRateViewModel
 
     var body: some View {
-        VStack(spacing: 0) {
-            DatePicker(
-                "Date",
-                selection: $viewModel.selectedDate,
-                displayedComponents: .date
-            )
-            .datePickerStyle(.compact)
-            .padding()
-            .accessibilityIdentifier("datePicker")
-            .accessibilityLabel("Select a date to view heart rate data")
-            .accessibilityHint("Shows heart rate recordings for the chosen day")
+        ZStack {
+            NowatchTheme.background.ignoresSafeArea()
 
-            Divider()
-
-            content
+            VStack(spacing: 0) {
+                header
+                Divider().background(NowatchTheme.axisColor)
+                content
+            }
         }
-        .padding()
         .task {
             await viewModel.loadInitialData()
         }
@@ -52,38 +44,75 @@ struct HeartRateView: View {
         }
     }
 
+    // MARK: - Header
+
+    private var header: some View {
+        HStack {
+            DatePicker(
+                "Date",
+                selection: $viewModel.selectedDate,
+                displayedComponents: .date
+            )
+            .datePickerStyle(.compact)
+            .labelsHidden()
+            .tint(NowatchTheme.chartOrange)
+            .accessibilityIdentifier("datePicker")
+            .accessibilityLabel("Select a date to view heart rate data")
+            .accessibilityHint("Shows heart rate recordings for the chosen day")
+
+            Spacer()
+
+            if viewModel.isToday {
+                liveIndicator
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 12)
+    }
+
+    private var liveIndicator: some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(NowatchTheme.chartOrange)
+                .frame(width: 8, height: 8)
+                .modifier(PulseEffect())
+            Text("LIVE")
+                .font(.caption.bold())
+                .foregroundStyle(NowatchTheme.chartOrange)
+        }
+        .accessibilityIdentifier("liveIndicator")
+        .accessibilityLabel("Receiving live heart rate data")
+    }
+
+    // MARK: - Content
+
     @ViewBuilder
     private var content: some View {
         if viewModel.isLoading {
             Spacer()
-            ProgressView {
-                Text("Importing heart rate data…")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
-            .accessibilityIdentifier("loadingIndicator")
-            .accessibilityLabel("Loading heart rate data")
+            ProgressView()
+                .tint(NowatchTheme.chartOrange)
+                .accessibilityIdentifier("loadingIndicator")
+                .accessibilityLabel("Loading heart rate data")
+            Text("Importing heart rate data…")
+                .font(.subheadline)
+                .foregroundStyle(NowatchTheme.secondaryText)
+                .padding(.top, 8)
             Spacer()
         } else if viewModel.heartRates.isEmpty {
             Spacer()
             emptyState
             Spacer()
         } else {
-            ChartView(
-                heartRates: viewModel.heartRates,
-                selectedDate: viewModel.selectedDate
-            )
-            .accessibilityElement(children: .contain)
-            .accessibilityIdentifier("heartRateChart")
-            .accessibilityLabel("Heart rate chart")
-
-            if viewModel.isToday {
-                Label("Live", systemImage: "waveform.path.ecg")
-                    .font(.caption.bold())
-                    .foregroundStyle(.red)
-                    .padding(.top, 8)
-                    .accessibilityIdentifier("liveIndicator")
-                    .accessibilityLabel("Receiving live heart rate data")
+            ScrollView {
+                ChartView(
+                    heartRates: viewModel.heartRates,
+                    selectedDate: viewModel.selectedDate
+                )
+                .accessibilityElement(children: .contain)
+                .accessibilityIdentifier("heartRateChart")
+                .accessibilityLabel("Heart rate chart")
+                .padding(.top, 16)
             }
         }
     }
@@ -92,17 +121,35 @@ struct HeartRateView: View {
         VStack(spacing: 12) {
             Image(systemName: "heart.slash")
                 .font(.system(size: 48))
-                .foregroundStyle(.secondary)
+                .foregroundStyle(NowatchTheme.secondaryText)
             Text("No Data")
                 .font(.title2.bold())
-            Text("No heart rate data available for the selected date.")
+                .foregroundStyle(NowatchTheme.primaryText)
+            Text("No heart rate data available\nfor the selected date.")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(NowatchTheme.secondaryText)
                 .multilineTextAlignment(.center)
         }
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("emptyState")
         .accessibilityLabel("No heart rate data available for the selected date")
         .padding()
+    }
+}
+
+// MARK: - Pulse Animation
+
+private struct PulseEffect: ViewModifier {
+    @State private var isPulsing = false
+
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(isPulsing ? 1.4 : 1.0)
+            .opacity(isPulsing ? 0.6 : 1.0)
+            .animation(
+                .easeInOut(duration: 0.8).repeatForever(autoreverses: true),
+                value: isPulsing
+            )
+            .onAppear { isPulsing = true }
     }
 }

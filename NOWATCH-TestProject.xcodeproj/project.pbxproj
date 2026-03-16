@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		9460ABF42C0F86E700412E0D /* StringOptional+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */; };
 		9460ABF62C0F87FD00412E0D /* StringOptional+DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */; };
 		94854FFC2C0F4A1000E2047C /* HeartRateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94854FFB2C0F4A1000E2047C /* HeartRateService.swift */; };
+		94931E0C2F6838A7007831F4 /* NowatchTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94931E0B2F6838A7007831F4 /* NowatchTheme.swift */; };
 		94AD6D422C09F6600014C9F2 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD6D412C09F6600014C9F2 /* ChartView.swift */; };
 		94AD6D442C0A07A30014C9F2 /* HeartRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */; };
 		F9C2540B2C08DF810026A73A /* NOWATCH_TestProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C2540A2C08DF810026A73A /* NOWATCH_TestProjectApp.swift */; };
@@ -69,6 +70,7 @@
 		9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringOptional+DateTests.swift"; sourceTree = "<group>"; };
 		94854FFB2C0F4A1000E2047C /* HeartRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
 		94931E002F682DFD007831F4 /* NOWATCH-TestProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NOWATCH-TestProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		94931E0B2F6838A7007831F4 /* NowatchTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowatchTheme.swift; sourceTree = "<group>"; };
 		94AD6D412C09F6600014C9F2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
 		E1DE2C032C09C33000EC43D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */,
+				94931E0B2F6838A7007831F4 /* NowatchTheme.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 			files = (
 				F9C254172C08DF820026A73A /* Model.xcdatamodeld in Sources */,
 				9460ABC82C0F5B6000412E0D /* ImportService.swift in Sources */,
+				94931E0C2F6838A7007831F4 /* NowatchTheme.swift in Sources */,
 				F9C254462C08EE2A0026A73A /* HeartRateEmitter.swift in Sources */,
 				F9C254142C08DF820026A73A /* Persistence.swift in Sources */,
 				F9C254232C08E0BE0026A73A /* HeartRate+CoreDataProperties.swift in Sources */,
