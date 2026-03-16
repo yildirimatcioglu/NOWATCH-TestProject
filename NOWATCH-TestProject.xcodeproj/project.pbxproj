@@ -43,6 +43,13 @@
 			remoteGlobalIDString = F9C254062C08DF810026A73A;
 			remoteInfo = "NOWATCH-TestProject";
 		};
+		94931E062F682DFD007831F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9C253FF2C08DF810026A73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9C254062C08DF810026A73A;
+			remoteInfo = "NOWATCH-TestProject";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +68,7 @@
 		9460ABF32C0F86E700412E0D /* StringOptional+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringOptional+Date.swift"; sourceTree = "<group>"; };
 		9460ABF52C0F87FD00412E0D /* StringOptional+DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringOptional+DateTests.swift"; sourceTree = "<group>"; };
 		94854FFB2C0F4A1000E2047C /* HeartRateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateService.swift; sourceTree = "<group>"; };
+		94931E002F682DFD007831F4 /* NOWATCH-TestProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NOWATCH-TestProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94AD6D412C09F6600014C9F2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		94AD6D432C0A07A20014C9F2 /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
 		E1DE2C032C09C33000EC43D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -78,8 +86,19 @@
 		F9C254452C08EE2A0026A73A /* HeartRateEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateEmitter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		94931E012F682DFD007831F4 /* NOWATCH-TestProjectUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "NOWATCH-TestProjectUITests"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		9460ABCA2C0F72AB00412E0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94931DFD2F682DFD007831F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,6 +257,7 @@
 				9460ABF12C0F84AB00412E0D /* NOWATCH-TestProject.xctestplan */,
 				F9C254092C08DF810026A73A /* NOWATCH-TestProject */,
 				9460ABCE2C0F72AB00412E0D /* NOWATCH-TestProjectTests */,
+				94931E012F682DFD007831F4 /* NOWATCH-TestProjectUITests */,
 				F9C254082C08DF810026A73A /* Products */,
 				F9C2541D2C08DFEB0026A73A /* Frameworks */,
 			);
@@ -248,6 +268,7 @@
 			children = (
 				F9C254072C08DF810026A73A /* NOWATCH-TestProject.app */,
 				9460ABCD2C0F72AB00412E0D /* NOWATCH-TestProjectTests.xctest */,
+				94931E002F682DFD007831F4 /* NOWATCH-TestProjectUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -306,6 +327,29 @@
 			productReference = 9460ABCD2C0F72AB00412E0D /* NOWATCH-TestProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		94931DFF2F682DFD007831F4 /* NOWATCH-TestProjectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94931E082F682DFD007831F4 /* Build configuration list for PBXNativeTarget "NOWATCH-TestProjectUITests" */;
+			buildPhases = (
+				94931DFC2F682DFD007831F4 /* Sources */,
+				94931DFD2F682DFD007831F4 /* Frameworks */,
+				94931DFE2F682DFD007831F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94931E072F682DFD007831F4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				94931E012F682DFD007831F4 /* NOWATCH-TestProjectUITests */,
+			);
+			name = "NOWATCH-TestProjectUITests";
+			packageProductDependencies = (
+			);
+			productName = "NOWATCH-TestProjectUITests";
+			productReference = 94931E002F682DFD007831F4 /* NOWATCH-TestProjectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		F9C254062C08DF810026A73A /* NOWATCH-TestProject */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9C2541A2C08DF820026A73A /* Build configuration list for PBXNativeTarget "NOWATCH-TestProject" */;
@@ -330,11 +374,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1520;
+				LastSwiftUpdateCheck = 2630;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9460ABCC2C0F72AB00412E0D = {
 						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F9C254062C08DF810026A73A;
+					};
+					94931DFF2F682DFD007831F4 = {
+						CreatedOnToolsVersion = 26.3;
 						TestTargetID = F9C254062C08DF810026A73A;
 					};
 					F9C254062C08DF810026A73A = {
@@ -357,12 +405,20 @@
 			targets = (
 				F9C254062C08DF810026A73A /* NOWATCH-TestProject */,
 				9460ABCC2C0F72AB00412E0D /* NOWATCH-TestProjectTests */,
+				94931DFF2F682DFD007831F4 /* NOWATCH-TestProjectUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9460ABCB2C0F72AB00412E0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94931DFE2F682DFD007831F4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,6 +455,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94931DFC2F682DFD007831F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F9C254032C08DF810026A73A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,6 +488,11 @@
 			isa = PBXTargetDependency;
 			target = F9C254062C08DF810026A73A /* NOWATCH-TestProject */;
 			targetProxy = 9460ABD12C0F72AB00412E0D /* PBXContainerItemProxy */;
+		};
+		94931E072F682DFD007831F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9C254062C08DF810026A73A /* NOWATCH-TestProject */;
+			targetProxy = 94931E062F682DFD007831F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -464,6 +532,48 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NOWATCH-TestProject.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NOWATCH-TestProject";
+			};
+			name = Release;
+		};
+		94931E092F682DFD007831F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WVAYFMM52X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yildirimatcioglu.NOWATCH-TestProjectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "NOWATCH-TestProject";
+			};
+			name = Debug;
+		};
+		94931E0A2F682DFD007831F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WVAYFMM52X;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yildirimatcioglu.NOWATCH-TestProjectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "NOWATCH-TestProject";
 			};
 			name = Release;
 		};
@@ -654,6 +764,15 @@
 			buildConfigurations = (
 				9460ABD42C0F72AB00412E0D /* Debug */,
 				9460ABD52C0F72AB00412E0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94931E082F682DFD007831F4 /* Build configuration list for PBXNativeTarget "NOWATCH-TestProjectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94931E092F682DFD007831F4 /* Debug */,
+				94931E0A2F682DFD007831F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -44,6 +44,7 @@ struct ChartView: View {
                     .foregroundStyle(.secondary)
             }
             .accessibilityElement(children: .combine)
+            .accessibilityIdentifier("bpmHeader")
             .accessibilityLabel("Current heart rate: \(Int(latest.ema)) beats per minute")
             .padding(.horizontal)
         }

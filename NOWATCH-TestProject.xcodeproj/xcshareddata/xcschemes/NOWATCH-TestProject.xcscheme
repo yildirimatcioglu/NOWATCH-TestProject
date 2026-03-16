@@ -44,6 +44,17 @@
                ReferencedContainer = "container:NOWATCH-TestProject.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "94931DFF2F682DFD007831F4"
+               BuildableName = "NOWATCH-TestProjectUITests.xctest"
+               BlueprintName = "NOWATCH-TestProjectUITests"
+               ReferencedContainer = "container:NOWATCH-TestProject.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

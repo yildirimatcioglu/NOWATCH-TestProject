@@ -16,6 +16,7 @@ struct HeartRateView: View {
             )
             .datePickerStyle(.compact)
             .padding()
+            .accessibilityIdentifier("datePicker")
             .accessibilityLabel("Select a date to view heart rate data")
             .accessibilityHint("Shows heart rate recordings for the chosen day")
 
@@ -60,6 +61,7 @@ struct HeartRateView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
+            .accessibilityIdentifier("loadingIndicator")
             .accessibilityLabel("Loading heart rate data")
             Spacer()
         } else if viewModel.heartRates.isEmpty {
@@ -72,6 +74,7 @@ struct HeartRateView: View {
                 selectedDate: viewModel.selectedDate
             )
             .accessibilityElement(children: .contain)
+            .accessibilityIdentifier("heartRateChart")
             .accessibilityLabel("Heart rate chart")
 
             if viewModel.isToday {
@@ -79,6 +82,7 @@ struct HeartRateView: View {
                     .font(.caption.bold())
                     .foregroundStyle(.red)
                     .padding(.top, 8)
+                    .accessibilityIdentifier("liveIndicator")
                     .accessibilityLabel("Receiving live heart rate data")
             }
         }
@@ -97,6 +101,7 @@ struct HeartRateView: View {
                 .multilineTextAlignment(.center)
         }
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("emptyState")
         .accessibilityLabel("No heart rate data available for the selected date")
         .padding()
     }
