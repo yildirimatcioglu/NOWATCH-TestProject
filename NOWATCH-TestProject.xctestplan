@@ -22,6 +22,13 @@
         "identifier" : "9460ABCC2C0F72AB00412E0D",
         "name" : "NOWATCH-TestProjectTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:NOWATCH-TestProject.xcodeproj",
+        "identifier" : "94931DFF2F682DFD007831F4",
+        "name" : "NOWATCH-TestProjectUITests"
+      }
     }
   ],
   "version" : 1
